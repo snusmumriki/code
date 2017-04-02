@@ -10,21 +10,20 @@ class Word:
         self.rate = rate
 
 
-def func():
-    while mana:
-        pass
-    j += True
-
-
 n, mana = map(int, input().split())
-words = []
-monsters = []
+word = None
+res = []
 j = 0
-for _ in range(n):
+for i in range(n):
     k, a, b = map(int, input().split())
     a = (a + j) % 1000001
     b = (b + j) % 1000001
     if k == 1:
-        words.append(Word(a, b))
+        word = max((word, Word(a, b)), lambda w: w.damage / w.rate)
     else:
-        monsters.append(Monster(a, b))
+        is_win = Monster(a, b).health / word.damage < mana / word.rate
+        j += is_win
+        res.append(is_win)
+
+for is_win in res:
+    print('YES' if is_win else 'NO')
