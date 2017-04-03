@@ -10,20 +10,33 @@ class Word:
         self.rate = rate
 
 
+def tf(arg):
+    return (arg + j) % 1000001
+
+
+def tfw(w):
+    w.damage, w.rate = tf(w.damage), tf(w.rate)
+    return w
+
+
 n, mana = map(int, input().split())
-word = None
+d = []
+words = []
 res = []
 j = 0
 for i in range(n):
     k, a, b = map(int, input().split())
-    a = (a + j) % 1000001
-    b = (b + j) % 1000001
     if k == 1:
-        word = max((word, Word(a, b)), lambda w: w.damage / w.rate)
+        words.append(Word(a, b))
     else:
-        is_win = Monster(a, b).health / word.damage < mana / word.rate
-        j += is_win
+        word = max(map(tfw, words), key=lambda w: w.damage / w.rate)
+        monster = Monster(tf(a), tf(b))
+        d.append(word)
+        d.append(word)
+        is_win = monster.health / word.damage < mana / word.rate
         res.append(is_win)
+        if is_win:
+            j = i
 
 for is_win in res:
     print('YES' if is_win else 'NO')
