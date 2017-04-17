@@ -4,14 +4,14 @@ from functools import reduce
 def bfs(user_, adj):
     a, b = user_
     tracks = [None] * len(adj)
-    tracks[a] = [a]  # уровень начальной вершины
-    stack = [a]  # добавляем начальную вершину в очередь
-    while stack:  # пока там что-то есть
-        node = stack.pop()  # извлекаем вершину
-        for i in adj[node]:  # запускаем обход из вершины node
-            if tracks[i] is None:  # проверка на посещенность
-                stack.append(i)  # добавление вершины в очередь
-                tracks[i] = tracks[node] + [i]  # подсчитываем уровень вершины
+    tracks[a] = [a]
+    stack = [a]
+    while stack:
+        node = stack.pop()
+        for i in adj[node]:
+            if tracks[i] is None:
+                stack.append(i)
+                tracks[i] = tracks[node] + [i]
     return tracks[b]
 
 
