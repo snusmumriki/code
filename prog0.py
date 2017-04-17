@@ -1,6 +1,3 @@
-from functools import reduce
-
-
 def bfs(user_, adj):
     a, b = user_
     tracks = [None] * len(adj)
