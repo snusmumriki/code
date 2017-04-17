@@ -12,7 +12,7 @@ def bfs(user_, adj):
             if tracks[i] is None:  # проверка на посещенность
                 stack.append(i)  # добавление вершины в очередь
                 tracks[i] = tracks[node] + [i]  # подсчитываем уровень вершины
-    return next(filter(lambda t: t[-1] == b, tracks))
+    return tracks[b]
 
 
 def func(tmp):
