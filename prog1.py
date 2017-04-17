@@ -17,4 +17,4 @@ def bfs(node, node1):
             if tracks[i] is None:
                 nodes.append(i)
                 tracks[i] = tracks[node] + [i]
-    return next(filter(lambda t: t[-1] == node1, tracks))
+    return tracks[node1]
