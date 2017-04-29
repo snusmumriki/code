@@ -18,3 +18,5 @@ def bfs(node, node1):
                 nodes.append(i)
                 tracks[i] = tracks[node] + [i]
     return tracks[node1]
+
+a = input(1 for _ in range(1))
