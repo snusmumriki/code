@@ -1,7 +1,7 @@
-n = int(input())
-coms = [tuple(map(int, input().split())) for _ in range(0, n)]
 nums = set()
-for com in coms:
+res = []
+for j in range(0, int(input())):
+    com = tuple(map(int, input().split()))
     tmp = set(range(com[1], com[2] + 1))
     if com[0] == 1:
         nums |= tmp
@@ -10,7 +10,12 @@ for com in coms:
     else:
         nums ^= tmp
     if nums:
-        tmp = set(range(1, max(nums) + 2)) - nums
-        print(min(tmp))
+        for i in range(1, max(nums) + 2):
+            if i not in nums:
+                res.append(i)
+                break
     else:
-        print(1)
+        res.append(1)
+
+for r in res:
+    print(r)
