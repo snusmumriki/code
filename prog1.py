@@ -1,22 +1,6 @@
-n, m, k = map(int, input().split())
-time = 2 * n // k
-graph = [[] for _ in range(n)]
-for _ in range(m):
-    x, y = map(int, input().split())
-    graph[x].append(y)
-    graph[y].append(x)
+def func1(x, y):
+    return x and not y
 
 
-def bfs(node, node1):
-    tracks = [None] * len(graph)
-    tracks[node] = node
-    nodes = [node]
-    while nodes:
-        node = nodes.pop()
-        for i in graph[node]:
-            if tracks[i] is None:
-                nodes.append(i)
-                tracks[i] = tracks[node] + [i]
-    return tracks[node1]
-
-a = input(1 for _ in range(1))
+row = [0, 1, 1, 0]
+print(list(map(func1, row + [0], [0] + row))[:-1])
