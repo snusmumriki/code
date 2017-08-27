@@ -21,7 +21,6 @@ i = sum(cstorage)  # всего пустых мест
 j = reduce(func, groupby(cstorage), 0) + 1  # одиноких пустых мест
 
 storage = [list(map(func1, row + [False], [False] + row))[:-1] for row in storage]
-print(storage)
 zstorage = [list(map(func1, column + [False], [False] + column))[:-1] for column in zstorage]
 zstorage = list(zip(*zstorage))
 
